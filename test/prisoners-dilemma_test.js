@@ -53,3 +53,17 @@ exports['getScore'] = {
         test.done();
     }
 };
+
+exports['strategies'] = {
+    'first soft majority, second betrays': function (test) {
+        var score = prisoners_dilemma.game(prisoners_dilemma.soft_majority, prisoners_dilemma.always_betray);
+        test.equal(score[0]- score[1], 5);
+        test.done();
+    },
+    'both soft majority': function (test) {
+        var iterations = 1,
+            score = prisoners_dilemma.game(prisoners_dilemma.soft_majority, prisoners_dilemma.soft_majority, iterations);
+        test.equal(score[0] + score[1], 2*iterations);
+        test.done();
+    }
+};
