@@ -34,3 +34,22 @@ exports['awesome'] = {
     test.done();
   },
 };
+
+exports['getScore'] = {
+    'both silent': function (test) {
+        test.deepEqual(prisoners_dilemma.getScore(0, 0), [1, 1]);
+        test.done();
+    },
+    'both betray': function (test) {
+        test.deepEqual(prisoners_dilemma.getScore(1, 1), [3, 3]);
+        test.done();
+    },
+    'first silent, second betrays': function (test) {
+        test.deepEqual(prisoners_dilemma.getScore(0, 1), [5, 0]);
+        test.done();
+    },
+    'first betrays, second silent': function (test) {
+        test.deepEqual(prisoners_dilemma.getScore(1, 0), [0, 5]);
+        test.done();
+    }
+};
